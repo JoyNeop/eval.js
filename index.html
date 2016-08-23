@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>eval.js</title>
+        <style>
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 15px;
+        }
+        html, body {
+            font-family: Menlo, Consolas, monospace;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        #run {
+            font-size: 30px;
+            color: #FFF;
+            text-align: center;
+            cursor: pointer;
+            background: #0998E9;
+            padding: 15px 0;
+        }
+        #run:hover {
+            background: #0089DA;
+        }
+        #run:active {
+            background: #0080CB;
+        }
+        #ta, #ta:focus {
+            font-family: Menlo, Consolas, monospace;
+            font-size: 15px;
+            color: #000;
+            background: #FFF;
+            border: none;
+            outline: none;
+            resize: none;
+            width: 100vw;
+            height: 100vh;
+            padding: 10px;
+            margin: 0;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="run">
+            RUN
+        </div>
+        <div id="content">
+            <textarea id="ta"></textarea>
+        </div>
+        <script>
+        (function (guid) {
+            if (localStorage[guid]) {
+                document.getElementById('ta').value = localStorage[guid];
+            } else {
+                localStorage[guid] = document.getElementById('ta').value;
+            };
+        })('16d19fff-6e4a-4820-9dca-a76ed4d7f51b');
+        document.getElementById('run').addEventListener('click', function () {
+            eval(document.getElementById('ta').value);
+        });
+        document.getElementById('ta').addEventListener('input', function () {
+            localStorage['16d19fff-6e4a-4820-9dca-a76ed4d7f51b'] = document.getElementById('ta').value;
+        });
+        </script>
+    </body>
+</html>
