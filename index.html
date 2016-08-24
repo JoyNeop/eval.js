@@ -23,7 +23,12 @@
             text-align: center;
             cursor: pointer;
             background: #0998E9;
-            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 60px;
+            padding: 12px 0 0;
         }
         #run:hover {
             background: #0089DA;
@@ -41,8 +46,9 @@
             resize: none;
             width: 100vw;
             height: 100vh;
-            padding: 10px;
+            padding: 70px 10px 10px;
             margin: 0;
+            overflow: scroll;
         }
         </style>
     </head>
@@ -58,15 +64,16 @@
             if (localStorage[guid]) {
                 document.getElementById('ta').value = localStorage[guid];
             } else {
+                document.getElementById('ta').value = 'alert("Welcome to <evaljs.online>!")';
                 localStorage[guid] = document.getElementById('ta').value;
             };
-        })('16d19fff-6e4a-4820-9dca-a76ed4d7f51b');
-        document.getElementById('run').addEventListener('click', function () {
-            eval(document.getElementById('ta').value);
-        });
-        document.getElementById('ta').addEventListener('input', function () {
-            localStorage['16d19fff-6e4a-4820-9dca-a76ed4d7f51b'] = document.getElementById('ta').value;
-        });
+            document.getElementById('run').addEventListener('click', function () {
+                eval(document.getElementById('ta').value);
+            });
+            document.getElementById('ta').addEventListener('input', function () {
+                localStorage[guid] = document.getElementById('ta').value;
+            });
+        })('16d19fff-6e4a-4820-9dca-a76ed4d7f51d');
         </script>
     </body>
 </html>
